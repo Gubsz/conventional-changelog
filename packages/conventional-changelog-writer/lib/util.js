@@ -12,7 +12,7 @@ Handlebars.registerHelper('trimHash', function(hash) {
   return new Handlebars.SafeString(trimmedHash);
 });
 
-// Add custom trim function for hashes
+// Add custom filter function to remove '_git' from TFS URL
 Handlebars.registerHelper('transformWorkUrl', function(url) {
   if (url) {
     var newUrl = url.replace('/_git', '');
