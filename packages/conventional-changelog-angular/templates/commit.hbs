@@ -6,7 +6,7 @@
 {{~/if}}
 
 {{~!-- commit link --}} {{#if @root.linkReferences~}}
-  ([{{hash}}](
+  ([{{trimHash hash}}](
   {{~#if @root.repository}}
     {{~#if @root.host}}
       {{~@root.host}}/
@@ -31,7 +31,7 @@
     {{~#if this.owner}}
       {{~this.owner}}/
     {{~/if}}
-    {{~this.repository}}#{{this.issue}}](
+     {{~transformWorkUrl this.repository}}#{{this.issue}}](
     {{~#if @root.repository}}
       {{~#if @root.host}}
         {{~@root.host}}/
@@ -40,22 +40,21 @@
         {{~#if this.owner}}
           {{~this.owner}}/
         {{~/if}}
-        {{~this.repository}}
+        {{~transformWorkUrl this.repository}}
       {{~else}}
         {{~#if @root.owner}}
           {{~@root.owner}}/
         {{~/if}}
-          {{~@root.repository}}
+           {{~transformWorkUrl @root.repository}}
         {{~/if}}
     {{~else}}
-      {{~@root.repoUrl}}
+       {{~transformWorkUrl @root.repoUrl}}
     {{~/if}}/
-    {{~@root.issue}}/{{this.issue}})
+    {{~@root.issue}}{{this.issue}}&_a=edit)
   {{~else}}
     {{~#if this.owner}}
       {{~this.owner}}/
     {{~/if}}
-    {{~this.repository}}#{{this.issue}}
+    {{~transformWorkUrl this.repository}}#{{this.issue}}
   {{~/if}}{{/each}}
 {{~/if}}
-

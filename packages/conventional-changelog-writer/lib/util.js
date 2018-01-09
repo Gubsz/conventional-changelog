@@ -6,6 +6,20 @@ var semver = require('semver');
 var _ = require('lodash');
 var stringify = require('json-stringify-safe');
 
+// Add custom trim function for hashes
+Handlebars.registerHelper('trimHash', function(hash) {
+  var trimmedHash = hash.substring(0, 7);
+  return new Handlebars.SafeString(trimmedHash);
+});
+
+// Add custom trim function for hashes
+Handlebars.registerHelper('transformWorkUrl', function(url) {
+  if (url) {
+    var newUrl = url.replace('/_git', '');
+    return new Handlebars.SafeString(newUrl);
+  }
+});
+
 function compileTemplates(templates) {
   var main = templates.mainTemplate;
   var headerPartial = templates.headerPartial;

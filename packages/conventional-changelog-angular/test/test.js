@@ -72,7 +72,7 @@ describe('angular preset', function() {
         expect(chunk).to.include('amazing new module');
         expect(chunk).to.include('**compile:** avoid a bug');
         expect(chunk).to.include('make it faster');
-        expect(chunk).to.include(', closes [#1](https://github.com/conventional-changelog/conventional-changelog-angular/issues/1) [#2](https://github.com/conventional-changelog/conventional-changelog-angular/issues/2)');
+        expect(chunk).to.include(', closes [#1](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=1&_a=edit) [#2](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=2&_a=edit)');
         expect(chunk).to.include('Not backward compatible.');
         expect(chunk).to.include('**compile:** The Change is huge.');
         expect(chunk).to.include('Features');
@@ -105,7 +105,7 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#133](https://github.com/conventional-changelog/conventional-changelog-angular/issues/133)');
+        expect(chunk).to.include('[#133](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=133)');
         done();
       }));
   });
@@ -121,8 +121,8 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
-        expect(chunk).to.not.include('closes [#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
+        expect(chunk).to.include('[#88](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=88)');
+        expect(chunk).to.not.include('closes [#88](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=88)');
         done();
       }));
   });
@@ -225,7 +225,7 @@ describe('angular preset', function() {
         chunk = chunk.toString();
 
         expect(chunk).to.include('(http://unknown/compare');
-        expect(chunk).to.include('](http://unknown/commits/');
+        expect(chunk).to.include('](http://unknown/commit/');
 
         i++;
         cb();
@@ -253,7 +253,7 @@ describe('angular preset', function() {
 
         expect(chunk).to.include('(https://github.com/conventional-changelog/example/compare');
         expect(chunk).to.include('](https://github.com/conventional-changelog/example/commit/');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/example/issues/');
+        expect(chunk).to.include('](https://github.com/conventional-changelog/example/_workitems#id=');
 
         i++;
         cb();
@@ -278,7 +278,7 @@ describe('angular preset', function() {
 
         expect(chunk).to.include('(https://github.com/conventional-changelog/conventional-changelog-angular/compare');
         expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/commit/');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/issues/');
+        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/_workitems#id=');
 
         i++;
         cb();
@@ -306,8 +306,8 @@ describe('angular preset', function() {
         expect(chunk).to.include('(https://github.internal.example.com/dlmr');
         expect(chunk).to.include('(https://github.internal.example.com/conventional-changelog/internal/compare');
         expect(chunk).to.include('](https://github.internal.example.com/conventional-changelog/internal/commit/');
-        expect(chunk).to.include('5](https://github.internal.example.com/conventional-changelog/internal/issues/5');
-        expect(chunk).to.include(' closes [#10](https://github.internal.example.com/conventional-changelog/internal/issues/10)')
+        expect(chunk).to.include('5](https://github.internal.example.com/conventional-changelog/internal/_workitems#id=5');
+        expect(chunk).to.include(' closes [#10](https://github.internal.example.com/conventional-changelog/internal/_workitems#id=10&_a=edit)')
 
         done();
       }));

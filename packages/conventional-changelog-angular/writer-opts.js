@@ -28,6 +28,10 @@ function getWriterOpts() {
       let discard = true;
       const issues = [];
 
+      // Fix issue/commit url
+      context.issue = '_workitems#id=';
+      context.commit = 'commit';
+
       commit.notes.forEach(note => {
         note.title = `BREAKING CHANGES`;
         discard = false;
@@ -59,16 +63,12 @@ function getWriterOpts() {
         commit.scope = ``;
       }
 
-      if (typeof commit.hash === `string`) {
-        commit.hash = commit.hash.substring(0, 7);
-      }
-
       if (typeof commit.subject === `string`) {
         let url = context.repository ?
           `${context.host}/${context.owner}/${context.repository}` :
           context.repoUrl;
         if (url) {
-          url = `${url}/issues/`;
+          url = `${url}/_workitems#id=`;
           // Issue URLs.
           commit.subject = commit.subject.replace(/#([0-9]+)/g, (_, issue) => {
             issues.push(issue);
